@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongo = require("../libs/mongo");
 
-router.get("/", (req, res, next) => {
+router.get("/", mongo.user.logout, (req, res, next) => {
 	res.render("login");
 });
 

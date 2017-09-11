@@ -18,7 +18,6 @@ var user = {
 		});
 	},
 	login: (req, res, next) => {
-		console.log(config.root_api + "/login");
 		rest.post(config.api_root + "/login", { data: { email: req.body.email, password: req.body.password } })
 		.then(function(data) {
 			req.session.apikey = data.apikey;
@@ -33,6 +32,12 @@ var user = {
 			console.trace(err);
 			res.redirect("/login");
 		});
+	},
+	logout: (req, res, next) => {
+		req.session.user = null;
+		req.session.apikey = null;
+		req.apihelper = null;
+		next();
 	}
 };
 

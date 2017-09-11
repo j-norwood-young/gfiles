@@ -27,7 +27,8 @@ block content
 					button.btn.btn-default(type="submit",name=name,id=id) Search
 		.row
 			.col-sm-12
-				+pagination(1, searchResult.page_count, 7, searchResult.page, base)
+				if searchResult
+					+pagination(1, searchResult.page_count, 7, searchResult.page, base)
 		.row
 			.col-sm-9
 				if searchResult
@@ -55,5 +56,8 @@ block content
 								td= f.raw.LastModifiedBy
 								td= f.raw.CreateDate
 								td= f.raw.ModifyDate
-
+		.row
+			.col-sm-12
+				if searchResult
+					+pagination(1, searchResult.page_count, 7, searchResult.page, base)
 
