@@ -1,0 +1,59 @@
+extends layout
+include mixins/pagination
+block content
+	h1= Search
+	form(method="GET")
+		input(type="hidden" name="dosearch" value="1")
+		.row
+			.col-sm-2
+				.form-group
+					.form-label Filename
+					input.form-control(name="filename" type="text" value=params.filename)
+			//- .col-sm-2
+			//- 	.form-group
+			//- 		.form-label Author
+			//- 		input.form-control(name="author" type="text" value=params.author)
+			//- .col-sm-2
+			//- 	.form-group
+			//- 		.form-label Start date
+			//- 		input.form-control(name="start_date" type="text" value=params.start_date)
+			//- .col-sm-2
+			//- 	.form-group
+			//- 		.form-label End date
+			//- 		input.form-control(name="end_date" type="text" value=params.end_date)
+			.col-sm-2
+				.form-group
+					.form-label &nbsp;
+					button.btn.btn-default(type="submit",name=name,id=id) Search
+		.row
+			.col-sm-12
+				+pagination(1, searchResult.page_count, 7, searchResult.page, base)
+		.row
+			.col-sm-9
+				if searchResult
+					p Search results: #{ searchResult.count }
+					table.table.table-bordered.table-striped
+						tr
+							th Filename
+							th Type
+							th Size
+							th Title
+							th Company
+							th Author
+							th Last Modified By
+							th Create Date
+							th Modify Date
+						each f in searchResult.data
+							tr
+								td
+									a(href="/document/" + f._id)= f.basename
+								td= f.raw.FileType
+								td= f.raw.FileSize
+								td= f.raw.Title
+								td= f.raw.Company
+								td= f.raw.Author
+								td= f.raw.LastModifiedBy
+								td= f.raw.CreateDate
+								td= f.raw.ModifyDate
+
+

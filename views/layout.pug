@@ -1,0 +1,42 @@
+include pug-bootstrap/_bootstrap
+body
+	.container
+		// Static navbar
+		nav.navbar.navbar-default
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') Gupta Files
+				#navbar.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href='/') Home
+						li
+							a(href='/search') Search
+						li.dropdown
+							a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+								| Browse
+								span.caret
+							ul.dropdown-menu(role='menu')
+								li
+									a(href='#') All
+								li.divider
+								li
+									a(href='#') PDF
+								li
+									a(href='#') Docx
+								li
+									a(href='#') Xlsx
+								li
+									a(href='#') Doc
+								li
+									a(href='#') Xls
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='/logout') Logout
+	.container
+		block content
