@@ -9,6 +9,7 @@ var user = {
 		if (!apikey || !user)
 			return res.redirect("/login");
 		req.apihelper = new APIHelper({ apikey });
+		res.locals.user = user;
 		req.apihelper.getOne("user", user._id)
 		.then(result => {
 			next();
