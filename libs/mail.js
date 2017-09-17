@@ -8,7 +8,6 @@ var send = function(mailObj) {
 		transporter.sendMail(mailObj, function(err, info) {
 			if (err) {
 				console.error(err);
-				logger.error(null, "Failed to send email", null, { mailObj, err });
 				return reject(err);
 			}
 			return resolve(info);
