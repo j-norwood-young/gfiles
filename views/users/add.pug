@@ -1,0 +1,18 @@
+extends ../layout
+block content
+	h1 Add a User
+	if alert
+		.row
+			.col-sm-12
+				.alert(class="alert-" + alert.status)= alert.msg
+	.row
+		form(method="post")
+			.col-sm-4
+				.form-group
+					.form-label Name
+					input.form-control(name="name" type="text" required="required")
+				.form-group
+					.form-label Email
+					input.form-control(name="email" type="email" required="required")
+				.form-group
+					button.btn.btn-default(type="submit") Submit
