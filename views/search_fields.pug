@@ -1,0 +1,27 @@
+form(method="GET" action="/search")
+	input(type="hidden" name="dosearch" value="1")
+	.row
+		.col-sm-2
+			.form-group
+				.form-label Filename
+				input.form-control(name="filename" type="text" value=(params) ? params.filename : "")
+		//- .col-sm-2
+		//- 	.form-group
+		//- 		.form-label Author
+		//- 		input.form-control(name="author" type="text" value=params.author)
+		.col-sm-2
+			.form-group
+				.form-label Full-Text Search
+				input.form-control(name="text" type="text" value=(params) ? params.text : "")
+		//- .col-sm-2
+		//- 	.form-group
+		//- 		.form-label Start date
+		//- 		input.form-control(name="start_date" type="text" value=params.start_date)
+		//- .col-sm-2
+		//- 	.form-group
+		//- 		.form-label End date
+		//- 		input.form-control(name="end_date" type="text" value=params.end_date)
+		.col-sm-2
+			.form-group
+				.form-label &nbsp;
+				button.btn.btn-default(type="submit",name=name,id=id) Search
