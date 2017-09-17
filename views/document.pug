@@ -1,0 +1,46 @@
+extends layout
+block content
+	h1= document.basename
+	p= document.filename
+	.row
+		.col-sm-3
+			h4 Properties
+			dl
+				if(document.properties.title)
+					dt Title
+					dd= document.properties.title
+				if(document.properties.author)
+					dt Author
+					dd= document.properties.author
+				if(document.properties.editor)
+					dt Editor
+					dd= document.properties.editor
+				if(document.properties.company)
+					dt Company
+					dd= document.properties.company
+				if(document.properties.created_date)
+					dt Created Date
+					dd= document.properties.created_date
+				if(document.properties.edited_date)
+					dt Edited Date
+					dd= document.properties.edited_date
+			h4 Raw
+			dl
+				each val, i in document.raw
+					dt= i
+					dd= val
+		.col-sm-9
+			if tables
+				each table in tables
+					h4= table.tablename
+					table.table.table-bordered.table-striped
+						each row, index in table.data
+							tr
+								each cell in row
+									if index
+										td= cell
+									else
+										th= cell
+			else
+				pre= document.body
+		

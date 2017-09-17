@@ -64,9 +64,12 @@ var meta = {
 				q["page"] = req.query.pg;
 			if (req.query.filename)
 				q["filter[filename]"] = "$regex:" + req.query.filename;
+			if (req.query.text)
+				q["filter[$text]"] = "$search:" + req.query.text;
+			console.log(q);
 			req.apihelper.get("meta", q)
 			.then(result => {
-				console.log(result.data[0].raw);
+				// console.log(result.data[0].raw);
 				res.locals.searchResult = result;
 				next();
 			})

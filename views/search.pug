@@ -13,6 +13,10 @@ block content
 			//- 	.form-group
 			//- 		.form-label Author
 			//- 		input.form-control(name="author" type="text" value=params.author)
+			.col-sm-2
+				.form-group
+					.form-label Full-Text Search
+					input.form-control(name="text" type="text" value=params.text)
 			//- .col-sm-2
 			//- 	.form-group
 			//- 		.form-label Start date
@@ -27,37 +31,44 @@ block content
 					button.btn.btn-default(type="submit",name=name,id=id) Search
 		.row
 			.col-sm-12
-				if searchResult
+				if searchResult && searchResult.count
 					+pagination(1, searchResult.page_count, 7, searchResult.page, base)
 		.row
 			.col-sm-9
-				if searchResult
+				if searchResult && searchResult.count
 					p Search results: #{ searchResult.count }
-					table.table.table-bordered.table-striped
-						tr
-							th Filename
-							th Type
-							th Size
-							th Title
-							th Company
-							th Author
-							th Last Modified By
-							th Create Date
-							th Modify Date
-						each f in searchResult.data
+						table.table.table-bordered.table-striped
 							tr
-								td
-									a(href="/document/" + f._id)= f.basename
-								td= f.raw.FileType
-								td= f.raw.FileSize
-								td= f.raw.Title
-								td= f.raw.Company
-								td= f.raw.Author
-								td= f.raw.LastModifiedBy
-								td= f.raw.CreateDate
-								td= f.raw.ModifyDate
+								th Filename
+								th Type
+								th Size
+								th Title
+								th Company
+								th Author
+								th Last Modified By
+								th Create Date
+								th Modify Date
+								th Preview
+							each f in searchResult.data
+								tr
+									td
+										a(href="/document/" + f._id)= f.basename
+									td= f.raw.FileType
+									td= f.raw.FileSize
+									td= f.raw.Title
+									td= f.raw.Company
+									td= f.raw.Author
+									td= f.raw.LastModifiedBy
+									td= f.raw.CreateDate
+									td= f.raw.ModifyDate
+									if f.body.trim().length
+										td= f.body.trim().substr(0, 30) + "..."
+									else
+										td
+				else
+					h4 No results
 		.row
 			.col-sm-12
-				if searchResult
+				if searchResult && searchResult.count
 					+pagination(1, searchResult.page_count, 7, searchResult.page, base)
 
