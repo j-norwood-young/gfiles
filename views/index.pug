@@ -1,6 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p Gupta Files indexed: #{count}
+	h1= title
+	p Gupta Files indexed: #{count}
+	include search_fields
+	.well
+		h4 New features
+		h5 17 September 2017
+		ul
+			li Ability to add users and send automated mail (Admins only)
+			li Extracted text from numerous files, including most PDFs, XLSX, Doc and Docx
+			li Full-text search on those files
+			li Show the text in the document view
+			li In the case of XLSX, show a table of all the data as best we can
