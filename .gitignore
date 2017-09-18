@@ -31,3 +31,6 @@ npm-debug.log
 
 # Config
 config/*
+
+#Random
+.DS_Store
